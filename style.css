@@ -587,6 +587,59 @@ video {
   border-radius: 15px;
   font-weight: 600;
 }
+
+/* serach page */
+.results {
+  font-size: 26px;
+  color: var(--color-light);
+  margin-bottom: 20px;
+}
+.results-videos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.results-videos div {
+  width: 250px;
+  height: 300px;
+  background-color: var(--color-dark);
+  text-align: center;
+  padding: 20px 8px;
+  border-radius: 15px;
+}
+
+.results-videos div img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.results-videos div h5 {
+  font-size: 22px;
+  color: var(--color-light);
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.results-videos p {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-dark-20);
+  margin-bottom: 40px;
+}
+.results-videos-btn {
+  background-color: var(--color-primary);
+  font-size: 22px;
+  color: var(--color-light);
+  font-weight: 600;
+  padding: 8px 25px;
+  border-radius: 25px;
+}
 /* responsive design */
 @media (max-width: 900px) {
   .input-group,
@@ -622,6 +675,10 @@ video {
   }
   .post-container {
     width: 80%;
+  }
+  .result {
+    font-size: 18px;
+    margin-bottom: 10px;
   }
 }
 @media (max-width: 475px) {
