@@ -20,6 +20,7 @@ body {
   height: 100vh;
   background: var(--color-light);
   position: relative;
+  overflow-x: hidden;
 }
 .container {
   max-width: 1220px;
@@ -662,13 +663,20 @@ video {
   .posts-video {
     grid-template-columns: repeat(3, 1fr);
   }
+  .posts__video-item {
+    width: 220px;
+  }
 }
 @media (max-width: 600px) {
   .header-logo {
     font-size: 20px;
   }
-
+  .header {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
   .header__search {
+    order: 3;
     width: 100%;
     font-size: 14px;
   }
@@ -703,13 +711,6 @@ video {
 @media (max-width: 475px) {
   .container {
     padding: 0 6px;
-  }
-  .header {
-    flex-wrap: wrap;
-    row-gap: 10px;
-  }
-  .header__search {
-    order: 3;
   }
 
   .profile-info {
