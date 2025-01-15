@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Player Clone</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="header">
+        <h2 class="header-logo">logo</h2>
+        <div class="header__search">
+          <input type="text" placeholder="Search bar" />
+          <button>
+            <img src="./icons/search.svg" alt="search icon" />
+          </button>
+        </div>
+        <button id="btn" class="header__burger-button">
+          <img src="./icons/menu.svg" alt="menu icon" width="32" height="32" />
+        </button>
+      </div>
+    </header>
+    <div class="overlay visually-hidden" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+      <h4 class="sidebar-logo">logo</h4>
+      <button id="close-btn" class="close-btn">
+        <img src="./icons/close.svg" alt="close icon" />
+      </button>
+
+      <ul>
+        <li>
+          <a href="./about.html">
+            <img src="./icons/content-copy.svg" alt="content icon" />
+            About us
+          </a>
+        </li>
+      </ul>
+    </div>
+    <main class="main">
+      <section class="container">
+        <div class="post-container">
+          <div class="video-player">
+            <video
+              id="video"
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+            ></video>
+            <div class="progress">
+              <div class="progress-container" id="progressBar">
+                <div class="progress-bar"></div>
+                <div class="progress-handle"></div>
+              </div>
+              <div class="controls">
+                <button id="playPause">
+                  <img
+                    src="./icons/play.svg"
+                    alt="play pause icon"
+                    id="playPauseImg"
+                  />
+                </button>
+                <span id="time">00:00 / 00:00</span>
+                <button id="volume">
+                  <img
+                    src="./icons/volume-up.svg"
+                    alt="volume up icon"
+                    id="volumeIcon"
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="video-info">
+              <img src="./images/user.png" alt="Profile" />
+              <div>
+                <div>username</div>
+                <div>2 hours ago</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="download-cards">
+            <div>
+              <p>Video without watermark</p>
+              <a href="#">Download</a>
+            </div>
+            <div>
+              <p>Only sound</p>
+              <a href="#">Download</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      // sidebar
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const btn = document.getElementById("btn");
+      const closeBtn = document.getElementById("close-btn");
+
+      btn.addEventListener("click", () => {
+        sidebar.style.right = "0%";
+        overlay.classList.remove("visually-hidden");
+      });
+      closeBtn.addEventListener("click", () => {
+        sidebar.style.right = "-100%";
+        overlay.classList.add("visually-hidden");
+      });
+      overlay.addEventListener("click", () => {
+        sidebar.style.right = "-100%";
+        overlay.classList.add("visually-hidden");
+      });
+
+      //   video
+      const video = document.getElementById("video");
+      const playPauseButton = document.getElementById("playPause");
+      const progressBar = document.getElementById("progressBar");
+      const progressBarFill = progressBar.querySelector(".progress-bar");
+      const progressHandle = progressBar.querySelector(".progress-handle");
+      const timeDisplay = document.getElementById("time");
+      const volumeButton = document.getElementById("volume");
+      const playPauseImg = document.getElementById("playPauseImg");
+      const volumeIcon = document.getElementById("volumeIcon");
+
+      playPauseButton.addEventListener("click", () => {
+        if (video.paused) {
+          video.play();
+          playPauseImg.src = "./icons/pause.svg";
+        } else {
+          video.pause();
+          playPauseImg.src = "./icons/play.svg";
+        }
+      });
+
+      video.addEventListener("timeupdate", () => {
+        const progressPercent = (video.currentTime / video.duration) * 100;
+        progressBarFill.style.width = `${progressPercent}%`;
+        progressHandle.style.left = `${progressPercent}%`;
+        timeDisplay.textContent = `${formatTime(
+          video.currentTime
+        )} / ${formatTime(video.duration)}`;
+      });
+
+      progressBar.addEventListener("click", (e) => {
+        const clickPosition =
+          (e.offsetX / progressBar.offsetWidth) * video.duration;
+        video.currentTime = clickPosition;
+      });
+
+      volumeButton.addEventListener("click", () => {
+        video.muted = !video.muted;
+        volumeIcon.src = video.muted
+          ? "./icons/volume-off.svg"
+          : "./icons/volume-up.svg";
+      });
+
+      function formatTime(time) {
+        const minutes = Math.floor(time / 60)
+          .toString()
+          .padStart(2, "0");
+        const seconds = Math.floor(time % 60)
+          .toString()
+          .padStart(2, "0");
+        return `${minutes}:${seconds}`;
+      }
+    </script>
+  </body>
+</html>

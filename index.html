@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header class="container">
+      <div class="header">
+        <button class="header-button header__burger-button" id="btn">
+          <img src="./icons/menu.svg" alt="menu icon" width="32" height="32" />
+        </button>
+      </div>
+    </header>
+
+    <!-- sidebar -->
+    <div class="overlay visually-hidden" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+      <h4 class="sidebar-logo">logo</h4>
+      <button id="close-btn" class="close-btn">
+        <img src="./icons/close.svg" alt="close icon" />
+      </button>
+
+      <ul>
+        <li>
+          <a href="./about.html">
+            <img src="./icons/content-copy.svg" alt="content icon" />
+            About us
+          </a>
+        </li>
+      </ul>
+    </div>
+    <main class="container">
+      <div class="main-form">
+        <h2 class="logo">logo</h2>
+
+        <div class="input-group">
+          <input type="text" placeholder="Enter video Url" />
+          <div class="main-form-btn">
+            <img
+              src="./icons/document-go.svg"
+              alt="document-go icon"
+              width="28px"
+              height="28px"
+            />
+            <button>
+              <img src="/icons/scroll.svg" alt="scroll icon" />
+            </button>
+          </div>
+        </div>
+        <div class="tags">
+          <p><span></span> blalbla</p>
+          <p><span></span> blalbla</p>
+        </div>
+        <div class="description">
+          <h5>Title</h5>
+          <textarea placeholder="Description text"></textarea>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const btn = document.getElementById("btn");
+      const closeBtn = document.getElementById("close-btn");
+
+      btn.addEventListener("click", () => {
+        sidebar.style.right = "0%";
+        overlay.classList.remove("visually-hidden");
+      });
+      closeBtn.addEventListener("click", () => {
+        sidebar.style.right = "-100%";
+        overlay.classList.add("visually-hidden");
+      });
+      overlay.addEventListener("click", () => {
+        sidebar.style.right = "-100%";
+        overlay.classList.add("visually-hidden");
+      });
+    </script>
+  </body>
+</html>
