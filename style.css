@@ -653,6 +653,12 @@ video {
   border-radius: 25px;
 }
 /* responsive design */
+
+@media (max-width: 1024px) {
+  .posts__video-item {
+    width: 220px;
+  }
+}
 @media (max-width: 900px) {
   .input-group,
   .tags,
