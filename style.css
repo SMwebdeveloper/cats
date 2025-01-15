@@ -694,6 +694,11 @@ video {
     font-size: 18px;
     margin-bottom: 10px;
   }
+  .download-cards div {
+    flex-direction: column;
+    padding: 12px 16px;
+    row-gap: 8px;
+  }
 }
 @media (max-width: 475px) {
   .container {
